@@ -7,9 +7,6 @@
 ## By Dan Seeland
 ##    
 ##
-##    
-##
-##
 ################################################################
 ################################################################
 
@@ -27,9 +24,9 @@ Directories:
 3. scripts
    a. cst-rhel7/2023
    b. cst-rhel8/2024
-   c. cst-rhel9/2025
+   c. cst-rhel9/2025  (includes the "dryrun.sh")
 4. reports
-   a. [filename]-full.txt - a detailed text report with colors when viewed in a Linux terminal.
+   a. [filename]-full.txt  - a detailed text report with colors when viewed in a Linux terminal.
    b. [filename]-brief.txt - a summary text report with colors when viewed in a Linux terminal.
    c. [filename]-brief.csv - a comma-separated text report you can import to Excel (no colors).
    d. [filename]-score.txt - a summary text score report.
@@ -43,8 +40,7 @@ Usage:
 2. Copy the tar file to a network share or a location on the target host where script execution is permitted(i.e., /root)
 3. Extract the tar file
 4. CD to main/
-5. Run 'runcheck.sh' with sudo (or as root)
-   $ sudo ./runcheck.sh, or
+5. Run 'runcheck.sh' as root)
    # ./runcheck.sh
 
    If you find that the script dies before it can finish, it's probably because of the idle-timeout settings on the host. If that's the case, try using the no-hangup switch.
@@ -52,19 +48,19 @@ Usage:
    # ./runcheck.sh nohup
 
 6. The menu appears
-   Enter '1' (or '2') for the Compliance Self Test of your choice and hit Enter
+   Enter the menu selection for the Compliance Self Test of your choice and hit Enter
 7. The script names scroll down as they execute.
    Note: It's possible that some scripts will take longer to complete than the idle timeout settings on the host, and the session will die before the script can complete. In those cases, you can either hit a key (i.e., Enter, Backspase) every few minutes to keep the session alive, or you can temporarily modify the session idle timeout to a time that will allow the script to run to completion. That time will depend on the size of the partitions on the host.
 8. View the results in the 'reports' folder
    (The .csv file is viewable in Excel)
    (The xccdf file can be imported into a STIGViewer Checklist)
 9. Offload the reports to an approved share or media
-10. To leave no trace of this tool or the reports it generates, delete the directory you created in step 2 along with all of the contents within.
+10. It's a good idea not to leave vulnerability reports on the host itself. If you ran the script from a local partition on the target host, delete the directory you created in step 2 along with all of the contents within.
 
 Running only select scripts
 
 There a two ways to do this:
-  a. You can modify the config file in /cst/conf/ to only run the scripts you choose to see by commenting out the scripts you don't want it to run (#rhel-8-ac10.sh). When you execute the /main/runcheck.sh script, you'll get the same five reports containing the results from only the scripts you didn't comment out.
+  a. You can modify the config file in /cst/conf/ to only run the scripts you choose to see by commenting out the scripts you don't want it to run (i.e., #rhel-8-ac10.sh). When you execute the /main/runcheck.sh script, you'll get the same five reports containing the results from only the scripts you didn't comment out.
   b. You can list the scripts you want to skip in a '/conf/exceptions.cfg' file.
 
 Running the scripts individually
@@ -95,3 +91,4 @@ $ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8
 
 # Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates
 $ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq
+
