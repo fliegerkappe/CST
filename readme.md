@@ -81,6 +81,15 @@ Doing a dry run using the "dryrun.sh script"
 
 To view a live run of all scripts without generating all the reports, use the "dryrun.sh" script in the "\scripts" directory. If any of the scripts run into problems, you'll be able to see exactly which specific test is causing the problem and give you an idea how to get around it.
 
+What do all those CCI numbers mean?
+
+In each of the reports, all of the tests refer to one or more CCIs that refer to a specific requirement. To see what those requirements are, you can either open the stig text file associated with a particular test and search for a specific test, or you can run the "getcci.sh" script located in the /cst/files directory, and pass it the associated stig text file. Starting from the /cst directory;
+
+# cd files
+# ./getcci.sh stig/RHEL-9-v2-r5-IA3.txt
+
+What you'll get back is just the CCI numbers and the associated requirements called out in that file, without the rest of the STIG text.
+
 Practical Search Commands if you're in a Linux terminal session:
 
 # Get a list of failed CAT I vulnerabilities: (substitue 'CAT II,' 'CAT III', PASSED or VERIFY)
@@ -91,4 +100,5 @@ $ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8
 
 # Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates
 $ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq
+
 
