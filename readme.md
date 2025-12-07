@@ -92,7 +92,7 @@ In each of the reports, all of the tests refer to one or more CCIs that refer to
 # cd files
 # ./getcci.sh stig/RHEL-9-v2-r5-IA3.txt
 
-What you'll get back is just the CCI numbers and the associated requirements called out in that file, without the rest of the text in the file.
+What you'll get back is just the CCI numbers and the associated requirements called out in that file, without the rest of the STIG text in the file.
 
 Practical Search Commands if you're in a Linux terminal session:
 
@@ -104,3 +104,4 @@ $ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8
 
 # Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates
 $ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq
+
