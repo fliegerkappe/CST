@@ -39,9 +39,9 @@ Usage:
 3.	Extract the tar file  
 4.	CD to main/  
 5.	Run 'runcheck.sh'  
-   [your-host main]# ./runcheck.sh  
+   **[your-host main]# ./runcheck.sh**  
    If you find that the script dies before it can finish, it's probably because of the idle-timeout settings on the host. If that's the case, try using the no-hangup switch.  
-[your-host main]# ./runcheck.sh nohup  
+   **[your-host main]# ./runcheck.sh nohup**  
 6.	The menu appears  
    Enter the menu number for the Compliance Self Test of your choice and hit Enter.  
 7.	The script names scroll down as they execute.  
@@ -79,18 +79,19 @@ What do all those CCI numbers mean?
   
 In each of the reports, all of the tests refer to one or more CCIs that call out a specific requirement. To see what those requirements are, you can either open the stig text file associated with a particular test and search for a specific CCI, or you can run the "getcci.sh" script located in the /cst/files directory, and pass it the associated stig text file. Starting from the /cst/directory;  
   
-   [your-host cst]# cd files
-   [your-host files]# ./getcci.sh stig/RHEL-9-v2-r5-IA3.txt
+   **[your-host cst]# cd files**
+   **[your-host files]# ./getcci.sh stig/RHEL-9-v2-r5-IA3.txt**
    What you'll get back are just the CCI numbers and the associated requirements called out in that file, without the rest of the STIG text in the file.  
 
 Practical Search Commands if you're in a Linux terminal session:  
   
-># Get a list of failed CAT I vulnerabilities: (substitue 'CAT II,' 'CAT III', PASSED, N/A, or VERIFY)
-[your-host reports]$ sudo more [filename]-brief.txt | grep 'CAT I,' | grep FAILED | cut -d',' -f1,2,3,5,8  
+* *Get a list of failed CAT I vulnerabilities: (substitue 'CAT II,' 'CAT III', PASSED, N/A, or VERIFY)* *  
+**[your-host reports]$ sudo more [filename]-brief.txt | grep 'CAT I,' | grep FAILED | cut -d',' -f1,2,3,5,8**  
   
-># Get a pass/fail list by script  
-[your-host reports]$ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8  
+* *Get a pass/fail list by script* *  
+**[your-host reports]$ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8**  
   
-># Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates  
-[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq  
+* *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
+**[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
   
+
