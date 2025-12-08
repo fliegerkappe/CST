@@ -20,7 +20,7 @@ a. runcheck.sh - the main script.
    c. cst-rhel9_2025.cfg - a list of RHEL 9 scripts to run.  
    d. exceptions.cfg - a file used to list scripts in any of the above
       config files that you want to skip.
-4.	scripts
+4.	scripts  
    a. cst-rhel7/2023  
    b. cst-rhel8/2024  
    c. cst-rhel9/2025  
@@ -94,4 +94,5 @@ Practical Search Commands if you're in a Linux terminal session:
 * *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
   
+
 
