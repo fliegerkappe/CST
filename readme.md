@@ -86,13 +86,9 @@ Practical Search Commands if you're in a Linux terminal session:
   
 * *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
-  
 
-
-
-
-
-
+* *Get the count of unique tests (not counting any test that tells you to "VERIFY" (See) some other test result)* *  
+**[your-host reports]$ sudo more [filename]-brief.txt | grep -v "See " | wc -l**  
 
 
 
