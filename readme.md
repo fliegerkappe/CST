@@ -1,4 +1,4 @@
-Compliance Self Test (CST)
+Compliance Self Test (CST)  
 By Dan Seeland
   
 Used to run multiple bash shell scripts to check STIG compliance  
@@ -85,6 +85,7 @@ Practical Search Commands if you're in a Linux terminal session:
 * *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
   
+
 
 
 
