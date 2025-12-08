@@ -4,26 +4,26 @@ By Dan Seeland
 Used to run multiple bash shell scripts to check STIG compliance  
 Directories:  
 1.	main  
-a. runcheck.sh - the main script.  
+   a. runcheck.sh - the main script.  
 2.	conf  
    a. cst-rhel7_2023.cfg - a list of RHEL 7 scripts to run.  
    b. cst-rhel8_2024.cfg - a list of RHEL 8 scripts to run.  
    c. cst-rhel9_2025.cfg - a list of RHEL 9 scripts to run.  
    d. exceptions.cfg - a file used to list scripts in any of the above
       config files that you want to skip.
-4.	scripts  
+3.	scripts  
    a. cst-rhel7/2023  
    b. cst-rhel8/2024  
    c. cst-rhel9/2025  
-6.	reports  
+4.	reports  
    a. [filename]-full.txt - a detailed text report with colors when viewed in a Linux terminal.  
    b. [filename]-brief.txt - a summary text report with colors when viewed in a Linux terminal.  
    c. [filename]-brief.csv - a comma-separated text report you can import to Excel (no colors).  
    d. [filename]-score.txt - a summary text score report.  
    e. [filename]-xccdf.xml - results you can import to a STIG Viewer checklist.  
-7.	tmp  
+5.	tmp  
    a. temporary working files that are deleted after every run.
-8. files  
+6. files  
    a. assorted config files added or modified by the Red Hat image builder during the DISA STIG security requirements load. This is also where the "getcci.sh" is located.  
   
 Usage:  
@@ -87,6 +87,7 @@ Practical Search Commands if you're in a Linux terminal session:
 * *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
   
+
 
 
 
