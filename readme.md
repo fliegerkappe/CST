@@ -23,6 +23,8 @@ a. runcheck.sh - the main script.
    e. [filename]-xccdf.xml - results you can import to a STIG Viewer checklist.  
 7.	tmp  
    a. temporary working files that are deleted after every run.
+8. files  
+   a. assorted config files added or modified by the Red Hat image builder during the DISA STIG security requirements load. This is also where the "getcci.sh" is located.  
   
 Usage:  
 1.	Sudo to root  
@@ -85,6 +87,7 @@ Practical Search Commands if you're in a Linux terminal session:
 * *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
   
+
 
 
 
