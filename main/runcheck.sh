@@ -498,7 +498,6 @@ NUMBER=`echo "\e[32;1;48m"`     # light green
   fi
 
   echo "$(hostname)" > $score_report_file
-#  echo "$(date +%F-%H%M)" >> $score_report_file
   echo "$(date +%FT%H:%M:%S)" >> $score_report_file
   echo $choice >> $score_report_file
   runScripts $working_file
