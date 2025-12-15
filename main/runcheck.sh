@@ -473,19 +473,19 @@ NUMBER=`echo "\e[32;1;48m"`     # light green
            fn_option_picked "Compliance Self Test for RHEL 7 (2023)"
            fn_scriptAvail "$cst_rhel7_2023_cfg"
            scriptPath=$cst_rhel7_2023_dir
-	   choice="Compliance Self Test for RHEL 7 (2023)"
+           choice="Compliance Self Test for RHEL 7 (2023)"
            ;;
         2)
            fn_option_picked "Compliance Self Test for RHEL 8 (2024)"
            fn_scriptAvail "$cst_rhel8_2024_cfg"
            scriptPath=$cst_rhel8_2024_dir
-	   choice="Compliance Self Test for RHEL 8 (2024)"
+           choice="Compliance Self Test for RHEL 8 (2024)"
            ;;
         3)
            fn_option_picked "Compliance Self Test for RHEL 9 (2025)"
            fn_scriptAvail "$cst_rhel9_2025_cfg"
            scriptPath=$cst_rhel9_2025_dir
-	   choice="Compliance Self Test for RHEL 9 (2025)"
+           choice="Compliance Self Test for RHEL 9 (2025)"
            ;;
         4)
            fn_option_picked "Exit"
