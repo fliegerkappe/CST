@@ -1473,16 +1473,54 @@ fail=1
 datetime="$(date +%FT%H:%M:%S)"
 
 rootca="$(openssl x509 -text -in 2>/dev/null /etc/sssd/pki/sssd_auth_ca_db.pem)"
+found=0
+notbefore=0
+notafter=0
 
 if [[ $rootca ]]
 then
-  fail=0
+  now="$(date +%s)"
   for line in ${rootca[@]}
   do
-    echo -e "${NORMAL}RESULT:    ${BLD}$line${NORMAL}"
+    if [[ $line =~ "DoD Root CA" ]]
+    then
+      found=1
+      echo -e "${NORMAL}RESULT:    ${BLD}$line${NORMAL}"
+    elif [[ $line =~ "Not Before" ]]
+    then
+      nbd="$(echo $line | awk -F "Not Before" '{print $2}' | sed 's/: \+//' | sed 's/GMT//')"
+      notbeforedate="$(date -d $nbd '+%s')"
+      if [[ $now < $notbeforedate ]]
+      then
+	echo "$now is less than $notbeforedate"
+	echo -e "${NORMAL}RESULT:    ${RED}$line${NORMAL}"
+      else
+	notbefore=1
+        echo -e "${NORMAL}RESULT:    $line${NORMAL}"
+      fi
+    elif [[ $line =~ "Not After" ]]
+    then
+      nad="$(echo $line | awk -F "Not After" '{print $2}' | sed 's/: \+//' | sed 's/GMT//')"
+      notafterdate="$(date -d $nad '+%s')"
+      if [[ $now > $notafterdate ]]
+      then
+	echo "$now is greater than $notafterdate"
+	echo -e "${NORMAL}RESULT:    ${RED}$line${NORMAL}"
+      else
+	notafter=1
+        echo -e "${NORMAL}RESULT:    $line${NORMAL}"
+      fi
+    else
+      echo -e "${NORMAL}RESULT:    $line${NORMAL}"
+    fi
   done
 else
   echo -e "${NORMAL}RESULT:    ${RED}Nothing returned${NORMAL}"
+fi
+
+if [[ $found == 1 && $notbefore == 1 && $notafter == 1 ]]
+then
+  fail=0
 fi
 
 if [[ $fail == 0 ]]
