@@ -69,7 +69,7 @@ ruleid3="SV-257936r1044995"
 vulnid3="V-257936"
 
 title4a="RHEL 9 must log SSH connection attempts and failures to the server."
-title4b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | grep -iH '^\s*loglevel'."
+title4b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*loglevel'."
 title4c="Expecting: ${YLO}LogLevel VERBOSE
            NOTE: If a value of \"VERBOSE\" is not returned or the line is commented out or missing, this is a finding."${BLD}
 cci4="CCI-000067"
@@ -99,7 +99,7 @@ ruleid6="SV-257991r1051246"
 vulnid6="V-257991"
 
 title7a="RHEL 9 must force a frequent session key renegotiation for SSH connections to the server."
-title7b="Checking with: '/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | grep -iH '^\s*rekeylimit'"
+title7b="Checking with: '/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*rekeylimit'"
 title7c="Expecting: ${YLO}RekeyLimit 1G 1h
            NOTE: If \"RekeyLimit\" does not have a maximum data amount and maximum time defined, is missing, or is commented out, this is a finding."${BLD}
 cci7="CCI-000068 CCI-002418 CCI-002421"
@@ -252,7 +252,6 @@ fail=1
 
 datetime="$(date +%FT%H:%M:%S)"
 
-#loglevel="$(/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*loglevel')"
 loglevel="$(/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*loglevel')"
 
 if [[ $loglevel ]]

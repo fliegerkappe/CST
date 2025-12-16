@@ -78,7 +78,7 @@ ruleid1="SV-257779r958390"
 vulnid1="V-257779"
 
 title2a="RHEL 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a SSH logon."
-title2b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*banner'"
+title2b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*banner'"
 title2c="Expecting: ${YLO}/etc/ssh/sshd_config.d/80-bannerPointer.conf:Banner /etc/issue
            NOTE: If the line is commented out, this is a finding.
 	   NOTE: This file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor"${BLD}
@@ -188,7 +188,7 @@ fail=1
 
 datetime="$(date +%FT%H:%M:%S)"
 
-bannerpath="$(/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | sudo grep -iH '^\s*banner')"
+bannerpath="$(/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*banner')"
 
 if [[ $bannerpath ]]
 then

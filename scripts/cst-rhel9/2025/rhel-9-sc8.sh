@@ -88,7 +88,7 @@ ruleid5="SV-257978r1045013"
 vulnid5="V-257978"
 
 title6a="RHEL 9 must force a frequent session key renegotiation for SSH connections to the server."
-title6b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*rekeylimit'"
+title6b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*rekeylimit'"
 title6c="Expecting: ${YLO}RekeyLimit 1G 1h
            NOTE: If \"RekeyLimit\" does not have a maximum data amount and maximum time defined, is missing, or is commented out, this is a finding."${BLD}
 cci6="CCI-000068 CCI-002418 CCI-002421"

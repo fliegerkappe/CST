@@ -69,7 +69,7 @@ ruleid3="SV-257838r1044912"
 vulnid3="V-257838"
 
 title4a="RHEL 9 SSHD must accept public key authentication."
-title4b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*pubkeyauthentication'"
+title4b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*pubkeyauthentication'"
 title4c="Expecting: ${YLO}PubkeyAuthentication yes
            NOTE: If \"PubkeyAuthentication\" is set to no, the line is commented out, or the line is missing, this is a finding."${BLD}
 cci4="CCI-000765 CCI-000766 CCI-000767 CCI-000768"
@@ -79,7 +79,7 @@ ruleid4="SV-257983r1045024"
 vulnid4="V-257983"
 
 title5a="RHEL 9 SSHD must not allow blank passwords."
-title5b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*permitemptypasswords'"
+title5b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*permitemptypasswords'"
 title5c="Expecting: ${YLO}PermitEmptyPasswords no
            NOTE: If the \PermitEmptyPasswords\ keyword is set to \yes\, is missing, or is commented out, this is a finding."${BLD}
 cci5="CCI-000766"
@@ -89,7 +89,7 @@ ruleid5="SV-257984r1045026"
 vulnid5="V-257984"
 
 title6a="RHEL 9 must not permit direct logons to the root account using remote access via SSH."
-title6b="Checking with: sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*permitrootlogin'"
+title6b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*permitrootlogin'"
 title6c="Expecting: ${YLO}PermitRootLogin no
            NOTE: If the \"PermitRootLogin\" keyword is set to any value other than \"no\", is missing, or is commented out, this is a finding."${BLD}
 cci6="CCI-004045 CCI-000770"
@@ -417,7 +417,7 @@ fail=1
 
 datetime="$(date +%FT%H:%M:%S)"
 
-direct="$(sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*permitrootlogin')"
+direct="$(/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*permitrootlogin')"
 
 if [[ $direct ]]
 then

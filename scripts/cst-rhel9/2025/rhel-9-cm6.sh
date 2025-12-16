@@ -8614,7 +8614,7 @@ isinstalled="$(dnf list --installed 2>/dev/null aide | grep -Ev 'Updating|Instal
 if [[ $isinstalled ]]
 then
 
-  location="$(find / 2>/dev/null -name aide.conf)"
+  location="$(find / 2>/dev/null -not -path '/mnt/*' -name aide.conf)"
 
   if [[ $location ]]
   then
@@ -8726,7 +8726,7 @@ isinstalled="$(dnf list --installed 2>/dev/null aide | grep -Ev 'Updating|Instal
 if [[ $isinstalled ]]
 then
 
-  location="$(find / 2>/dev/null -name aide.conf)"
+  location="$(find / 2>/dev/null -not -path '/mnt/*' -name aide.conf)"
 
   if [[ $location ]]
   then
@@ -8838,7 +8838,7 @@ isinstalled="$(dnf list --installed 2>/dev/null aide | grep -Ev 'Updating|Instal
 if [[ $isinstalled ]]
 then
 
-  location="$(find / 2>/dev/null -name aide.conf)"
+  location="$(find / 2>/dev/null -not -path '/mnt/*' -name aide.conf)"
 
   if [[ $location ]]
   then

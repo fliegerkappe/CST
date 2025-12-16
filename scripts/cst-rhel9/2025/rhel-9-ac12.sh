@@ -25,7 +25,7 @@ stig="Red Hat Enterprise Linux 9 Version: 2 Release: 5 Benchmark Date: 02 Jul 20
 
 hostname="$(uname -n)"
 
-if [[ -f /etc/redhat-release ]]
+if [[ -f /etc/redhat-release ]]`
 then
    os="$(cat /etc/redhat-release)"
 else
@@ -37,7 +37,7 @@ prog="$(basename $0)"
 controlid="AC-12 Session Termination"
 
 title1a="RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
-title1b="Checking with ${YLO}'/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*clientalivecountmax'."
+title1b="Checking with ${YLO}'/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*clientalivecountmax'."
 title1c="Expecting: ${YLO}ClientAliveCountMax 1
            Note: If \"ClientAliveCountMax\" does not exist, is not set to a value of \"1\" in \"/etc/ssh/sshd_config\", or is commented out, this is a finding."${BLD}
 cci1="CCI-001133 CCI-002361"
@@ -47,7 +47,7 @@ ruleid1="SV-257995r1045053"
 vulnid1="V-257995"
 
 title2a="RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
-title2b="Checking with '/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*clientaliveinterval'."
+title2b="Checking with '/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*clientaliveinterval'."
 title2c="Expecting: ${YLO}ClientAliveInterval 600
            Note: If \"ClientAliveInterval\" does not exist, does not have a value of \"600\" or less in \"/etc/ssh/sshd_config\", or is commented out, this is a finding."${BLD}
 cci2="CCI-001133"
@@ -78,17 +78,19 @@ fail=1
 
 datetime="$(date +%FT%H:%M:%S)"
 
-calivemax="$(/usr/sbin/sshd -dd 2>&1 | grep -v "#" | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | sudo grep -iH '^\s*clientalivecountmax')"
+calivemax="$(/usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*clientalivecountmax')"
 
 if [[ $calivemax ]]
 then
   calivemaxval="$(echo $calivemax | awk '{print $2}')"
   if [[ $calivemaxval == 1 ]]
   then
-    echo -e "${NORMAL}RESULT:    ${BLD}$calivemax${NORMAL}"
     fail=0
+    file="$(echo $calivemax | awk -F: '{print $1}')"
+    setting="$(echo $calivemax | awk -F: '{print $2}')"
+    echo -e "${NORMAL}RESULT:    ${CYN}$file:${BLD}$setting${NORMAL}"
   else
-    echo -e "${NORMAL}RESULT:    ${RED}$calivemax${NORMAL}"
+    echo -e "${NORMAL}RESULT:    ${CYN}$file:${RED}$setting${NORMAL}"
   fi
 else
   echo -e "${NORMAL}RESULT:    ${BLD}\"ClientAliveCountMax\" is not defined${NORMAL}"
@@ -123,17 +125,19 @@ fail=1
 
 datetime="$(date +%FT%H:%M:%S)"
 
-caliveint="$(/usr/sbin/sshd -dd 2>&1 | grep -v "#" | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | sudo grep -iH '^\s*clientaliveinterval')"
+caliveint="$(/usr/sbin/sshd -dd 2>&1 | grep -v "#" | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs grep -iH '^\s*clientaliveinterval')"
 
 if [[ $caliveint ]]
 then
   caliveintval="$(echo $caliveint | awk '{print $2}')"
   if (( $caliveintval <= 600 )) && [[ $caliveintval != 0 ]]
   then
-    echo -e "${NORMAL}RESULT:    ${BLD}$caliveint${NORMAL}"
     fail=0
+    file="$(echo $caliveint | awk -F: '{print $1}')"
+    setting="$(echo $caliveint | awk -F: '{print $2}')"
+    echo -e "${NORMAL}RESULT:    ${CYN}$file:${BLD}$setting${NORMAL}"
   else
-    echo -e "${NORMAL}RESULT:    ${RED}$caliveint${NORMAL}"
+    echo -e "${NORMAL}RESULT:    ${CYN}$file:${RED}$setting${NORMAL}"
   fi
 else
   echo -e "${NORMAL}RESULT:    ${BLD}\"ClientAliveInterval\" is not defined${NORMAL}"

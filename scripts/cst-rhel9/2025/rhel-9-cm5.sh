@@ -204,7 +204,7 @@ ruleid15="SV-257923r1044991"
 vulnid15="V-257923"
 
 title16a="RHEL 9 SSH daemon must not allow GSSAPI authentication."
-title16b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*gssapiauthentication'"
+title16b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*gssapiauthentication'"
 title16c="Expecting: ${YLO}GSSAPIAuthentication no
            NOTE: If the value is returned as \"yes\", the returned line is commented out, no output is returned, and the use of GSSAPI authentication has not been documented with the information system security officer (ISSO), this is a finding."${BLD}
 cci16="CCI-001813"
@@ -214,7 +214,7 @@ ruleid16="SV-258003r1045065"
 vulnid16="V-258003"
 
 title17a="RHEL 9 SSH daemon must not allow Kerberos authentication."
-title17b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*kerberosauthentication'"
+title17b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*kerberosauthentication'"
 title17c="Expecting: ${YLO}KerberosAuthentication no
            NOTE: If the value is returned as \"yes\", the returned line is commented out, no output is returned, and the use of Kerberos authentication has not been documented with the information system security officer (ISSO), this is a finding."${BLD}
 cci17="CCI-001813"

@@ -37,7 +37,7 @@ prog="$(basename $0)"
 controlid="SC-10 Network Disconnect"
 
 title1a="RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated at the end of the session or after 10 minutes of inactivity, except to fulfill documented and validated mission requirements."
-title1b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*clientalivecountmax'"
+title1b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*clientalivecountmax'"
 title1c="Expecting:${YLO}ClientAliveCountMax 0
 	   NOTE: If \"ClientAliveCountMax\" does not exist, is not set to a value of \"0\" in \"/etc/ssh/sshd_config\", or is commented out, this is a finding."${BLD}
 cci1="CCI-001133 CCI-002361"
@@ -47,7 +47,7 @@ ruleid1="SV-257995r1045053"
 vulnid1="V-257995"
 
 title2a="RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
-title2b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | sudo grep -iH '^\s*clientaliveinterval'"
+title2b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*clientaliveinterval'"
 title2c="Expecting: ${YLO}ClientAliveInterval 600
 	   NOTE: If \"ClientAliveInterval\" does not exist, does not have a value of \"600\" or less in \"/etc/ssh/sshd_config\", or is commented out, this is a finding."${BLD}
 cci2="CCI-001133 CCI-002361 CCI-002891"

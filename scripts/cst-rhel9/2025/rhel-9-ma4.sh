@@ -78,7 +78,7 @@ ruleid3="SV-257796r1044847"
 vulnid3="V-257796"
 
 title4a="RHEL 9 must enable the Pluggable Authentication Module (PAM) interface for SSHD."
-title4b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | grep -iH '^\s*usepam'"
+title4b="Checking with: /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print \$4}' | tr -d '\\\\r' | tr '\\\\n' ' ' | xargs grep -iH '^\s*usepam'"
 title4c="Expecting: ${YLO}UsePAM yes
            NOTE: If the \"UsePAM\" keyword is set to \"no\", is missing, or is commented out, this is a finding."${BLD}
 cci4="CCI-000877"
