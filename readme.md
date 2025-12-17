@@ -77,7 +77,7 @@ In each of the reports, all of the tests refer to one or more CCIs that call out
 
 Practical Search Commands if you're in a Linux terminal session:  
   
-* *Get a list of failed CAT I vulnerabilities: (substitue 'CAT II,' 'CAT III', PASSED, N/A, or VERIFY)* *  
+* *Get a list of failed CAT I vulnerabilities: (substitute 'CAT II,' 'CAT III', PASSED, N/A, or VERIFY)* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | grep 'CAT I,' | grep FAILED | cut -d',' -f1,2,3,5,8**  
   
 * *Get a pass/fail list by script* *  
@@ -88,6 +88,7 @@ Practical Search Commands if you're in a Linux terminal session:
 
 * *Get the count of unique tests (not counting any test that tells you to "VERIFY" (See) some other test result)* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | grep -v "See " | wc -l**  
+
 
 
 
