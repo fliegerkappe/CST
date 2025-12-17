@@ -25,7 +25,7 @@ stig="Red Hat Enterprise Linux 9 Version: 2 Release: 5 Benchmark Date: 02 Jul 20
 
 hostname="$(uname -n)"
 
-if [[ -f /etc/redhat-release ]]`
+if [[ -f /etc/redhat-release ]]
 then
    os="$(cat /etc/redhat-release)"
 else
