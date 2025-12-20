@@ -76,18 +76,20 @@ In each of the reports, all of the tests refer to one or more CCIs that call out
    What you'll get back are just the CCI numbers and the associated requirements called out in that file, without the rest of the STIG text in the file.  
 
 Practical Search Commands if you're in a Linux terminal session:  
+Note: "tput sgr0" resets the terminal session font attributes when the last word returned is not "normal".  
   
 * *Get a list of failed CAT I vulnerabilities: (substitute 'CAT II,' 'CAT III', PASSED, N/A, or VERIFY)* *  
-**[your-host reports]$ sudo more [filename]-brief.txt | grep 'CAT I,' | grep FAILED | cut -d',' -f1,2,3,5,8**  
+**[your-host reports]$ sudo more [filename]-brief.txt | grep 'CAT I,' | grep FAILED | cut -d',' -f1,2,3,5,8; tput sgr0**  
   
 * *Get a pass/fail list by script* *  
-**[your-host reports]$ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8**  
+**[your-host reports]$ sudo more [filename]-brief.txt | grep 'AC-10' | cut -d',' -f1,2,3,5,8; tput sgr0**  
   
 * *Get a sorted list of vulnerabilities checked by vulnerability ID - no duplicates* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | cut -d',' -f5 | sort | uniq**  
 
 * *Get the count of unique tests (not counting any test that tells you to "VERIFY" (See) some other test result)* *  
 **[your-host reports]$ sudo more [filename]-brief.txt | grep -v "See " | wc -l**  
+
 
 
 
