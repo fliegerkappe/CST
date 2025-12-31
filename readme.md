@@ -74,7 +74,7 @@ What do all those CCI numbers mean?
   
 In each of the reports, all of the tests refer to one or more CCIs that call out a specific requirement. To see what those requirements are, you can either open the stig text file associated with a particular test and search for a specific CCI, or you can run the "getcci.sh" script located in the /cst/files directory, and pass it the associated stig text file. Starting from the /cst/directory;  
   
-**\[your-host cst]# cd file**  
+**\[your-host cst]# cd files**  
 **\[your-host files]# ./getcci.sh stig/RHEL-9-v2-r5-IA3.txt**  
   
 What you'll get back are just the CCI numbers and the associated requirements called out in that file, without the rest of the STIG text in the file.  
@@ -93,6 +93,7 @@ Note: "tput sgr0" resets the terminal text attributes when the color on the last
   
 * *Get a count of unique tests. (any test that doesn't tell you to "VERIFY" another test result)* *  
 **\[your-host reports]$ sudo more \[filename]-brief.txt | grep -v "See " | wc -l**
+
 
 
 
