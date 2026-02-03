@@ -58,7 +58,7 @@ ruleid1="SV-257842r1044916"
 vulnid1="V-257842"
 
 title2a="RHEL 9 must have the AIDE package installed."
-title2b="checking with: find / -name aide.conf"
+title2b="Checking with: find / -name aide.conf"
 title2c="Expecting: ${YLO}/etc/aide.conf
            NOTE: If the \"acl\" rule is not being used on all selection lines in the \"/etc/aide.conf\" file, is commented out, or ACLs are not being checked by another file integrity tool, this is a finding."${BLD}
 cci2="CCI-001744 CCI-002696"
@@ -153,7 +153,7 @@ isinstalled="$(dnf list --installed 2>/dev/null aide | grep -Ev 'Updating|Instal
 if [[ $isinstalled ]]
 then
 
-  location="$(find / 2>/dev/null -name aide.conf)"
+  location="$(find / 2>/dev/null -not -path '/mnt/*' -name aide.conf)"
   
   if [[ $location ]]
   then
@@ -162,8 +162,8 @@ then
     # have to use "cat /etc/aide.conf" instead
   
     echo -e "${NORMAL}RESULT:    ${BLD}\"aide.conf\" is in $location${NORMAL}"
-    aideconfig="$(cat $location | grep -v "^!"| grep -v "=" | grep -v "^#" | grep -v "@@" | grep -v "verbose" | grep -v "dbout" | grep -v "report_url" | grep -v "^:::" | grep -v "^/etc/aide.conf$")"
-  
+    aideconfig="$(cat $location | grep -v "^!"| grep -v "=" | grep -v "^#" | grep -v "@@" | grep -v "verbose" | grep -v "dbout" | grep -v "report_url" | grep -v "^:::" | grep -v "^/etc/aide.conf$" | grep -v '^[[:space:]]*$')"
+
     categories="$(cat $location | grep -v "^!" | grep "=" | grep -v "^#" | grep -v "@@" | grep -v "verbose" | grep -v "dbout" | grep -v "report_url")"
   
     badcat=( )
@@ -223,7 +223,7 @@ then
   else
     echo -e "${NORMAL}RESULT:    ${RED}\"aide.conf\" not found${NORMAL}"
     fail=1
-  fi
+ fi
 else
   fail=1
   echo -e "${NORMAL}RESULT:    ${RED}The \"aide\" package is not installed${NORMAL}"
@@ -235,7 +235,6 @@ then
 else
   echo -e "${NORMAL}$hostname, $severity2, $controlid, $stigid2, $ruleid2, $cci2, $datetime, ${RED}FAILED, RHEL 9 is not configured so that the file integrity tool verifies Access Control Lists (ACLs).${NORMAL}"
 fi
-
 
 echo
 echo -e "${BAR}-------------------------------------------------------------------${NORMAL}"
@@ -284,7 +283,7 @@ fi
 
 if [[ -e /etc/cron.daily/aide ]]
 then
-  daily="$(more /etc/cron.daily/aide)"
+  daily="$(cat /etc/cron.daily/aide)"
   for line in ${daily[@]}
   do
     echo -e "${NORMAL}RESULT:    ${BLD}c. $line${NORMAL}"

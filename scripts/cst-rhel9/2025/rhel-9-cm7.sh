@@ -2715,7 +2715,7 @@ echo -e "${NORMAL}SEVERITY:  ${BLD}$severity48${NORMAL}"
 
 datetime="$(date +%FT%H:%M:%S)"
 
-echo -e "${NORMAL}$hostname, $severityi48, $controlid, $stigid48, $ruleid48, $cci48, $datetime, ${CYN}VERIFY, (See AC-18 Wireless Access: V-258039)${NORMAL}"
+echo -e "${NORMAL}$hostname, $severity48, $controlid, $stigid48, $ruleid48, $cci48, $datetime, ${CYN}VERIFY, (See AC-18 Wireless Access: V-258039)${NORMAL}"
 
 echo
 echo -e "${BAR}-------------------------------------------------------------------${NORMAL}"
@@ -2758,7 +2758,7 @@ if [[ $fail == 0 ]]
 then
   echo -e "${NORMAL}$hostname, $severity49, $controlid, $stigid49, $ruleid49, $cci49, $datetime, ${GRN}PASSED, RHEL 9 has the fapolicy module installed.${NORMAL}"
 else
-  echo -e "${NORMAL}$hostname, $severity46, $controlid, $stigid46, $ruleid46, $cci46, $datetime, ${RED}FAILED, RHEL 9 does not have the fapolicy module installed.${NORMAL}"
+  echo -e "${NORMAL}$hostname, $severity49, $controlid, $stigid49, $ruleid49, $cci49, $datetime, ${RED}FAILED, RHEL 9 does not have the fapolicy module installed.${NORMAL}"
 fi
 
 echo

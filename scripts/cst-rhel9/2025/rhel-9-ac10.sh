@@ -38,7 +38,7 @@ prog="$(basename $0)"
 controlid="AC-10 Concurrent Session Control"
 
 title1a="RHEL 9 must limit the number of concurrent sessions to ten for all accounts and/or account types."
-title1b="Checking with 'grep -r -s '^[^#].*maxlogins' /etc/security/limits.conf /etc/security/limits.d/*.conf'."
+title1b="Checking with:'grep -r -s '^[^#].*maxlogins' /etc/security/limits.conf /etc/security/limits.d/*.conf'."
 title1c="Expecting: ${YLO}* hard maxlogins 10
            NOTE: If the \"maxlogins\" item is missing, commented out, or the value is set greater than \"10\" and is not documented with the Information System Security Officer (ISSO) as an operational requirement for all domains that have the \"maxlogins\" item assigned, this is a finding."${BLD}
 cci1="CCI-000054"

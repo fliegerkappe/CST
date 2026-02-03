@@ -39,7 +39,7 @@ prog="$(basename $0)"
 controlid="SC-5 Denial of Service (DoS) Protection"
 
 title1a="RHEL 9 must protect against or limit the effects of denial-of-service (DoS) attacks by ensuring rate-limiting measures on impacted network interfaces are implemented."
-title1b="Checking with 'grep -i firewallbackend /etc/firewalld/firewalld.conf'."
+title1b="Checking with:'grep -i firewallbackend /etc/firewalld/firewalld.conf'."
 title1c="Expecting: ${YLO}
            # FirewallBackend
 	   FirewallBackend=nftables

@@ -49,7 +49,7 @@ echo "Parent PID: $PPID"
 controlid="CM-6 Configuration Settings"
 
 title1a="RHEL 9 must be a vendor-supported release."
-title1b="Checking with 'cat /etc/redhat-release'."
+title1b="Checking with:'cat /etc/redhat-release'."
 title1c="Expecting:${YLO} Red Hat Enterprise Linux release 9.2 (Plow) (or newer)
            NOTE: If the release is not supported by the vendor, this is a finding."${BLD}
 cci1="CCI-000366"
@@ -59,7 +59,7 @@ ruleid1="SV-257777r991589"
 vulnid1="V-257777"
 
 title2a="RHEL 9 vendor packaged system security patches and updates must be installed and up to date."
-title2b="Checking with 'yum history list'."
+title2b="Checking with:'yum history list'."
 title2c="Expecting: ${YLO}package updates are performed within program requirements.
            Note: If package updates have not been performed on the system within the timeframe the site/program documentation requires, this is a finding."${BLD}
 cci2="CCI-000366"
@@ -229,7 +229,7 @@ ruleid16="SV-257859r991589"
 vulnid16="V-257859"
 
 title17a="RHEL 9 must prevent special devices on non-root local partitions."
-title17b="checking with: mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'"
+title17b="Checking with: mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'"
 title17c="Expecting: ${YLO}Nothing returned
            NOTE: If any output is produced, this is a finding."${BLD}
 cci17="CCI-000366"

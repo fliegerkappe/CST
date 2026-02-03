@@ -37,7 +37,7 @@ prog="$(basename $0)"
 controlid="SC-8 Transmission Confidentiality and Integrity"
 
 title1a="All RHEL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission."
-title1b="Checking with 'systemctl is-active sshd."
+title1b="Checking with:'systemctl is-active sshd."
 title1c="Expecting: ${YLO}active
            NOTE: If the \"sshd\" service is not \"active\", this is a finding."${BLD}
 cci1="CCI-002418 CCI-002420 CCI-002421 CCI-002422"
@@ -78,7 +78,7 @@ ruleid4="SV-258242r958908"
 vulnid4="V-258242"
 
 title5a="All RHEL 9 networked systems must have SSH installed."
-title5b="Checking with 'yum list installed openssh-server"
+title5b="Checking with:'yum list installed openssh-server"
 title5c="Expecting:${YLO}openssh-server.x86_64                 8.0p1-5.el8          @anaconda
            NOTE: If the \"SSH server\" package is not installed, this is a finding."${BLD}
 cci5="CCI-002418 CCI-002420 CCI-002421 CCI-002422"

@@ -72,7 +72,7 @@ ruleid3="SV-258021r1015088"
 vulnid3="V-258021"
 
 title4a="RHEL 9 must prevent a user from overriding the screensaver lock-enabled setting for the graphical user interface."
-title4b="Checking with 'gsettings writable org.gnome.desktop.screensaver lock-enabled'."
+title4b="Checking with:'gsettings writable org.gnome.desktop.screensaver lock-enabled'."
 title4c="Expecting: ${YLO}false
            NOTE: This requirement assumes the use of the RHEL 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
            NOTE: If \"lock-enabled\" is writable and the result is \"true\", this is a finding."${BLD}
@@ -94,7 +94,7 @@ ruleid5="SV-258023r958402"
 vulnid5="V-258023"
 
 title6a="RHEL 9 must prevent a user from overriding the session idle-delay setting for the graphical user interface."
-title6b="Checking with 'gsettings writable org.gnome.desktop.session idle-delay'."
+title6b="Checking with:'gsettings writable org.gnome.desktop.session idle-delay'."
 title6c="Expecting: ${YLO}false
            NOTE: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable."${BLD}
 cci6="CCI-000057 CCI-000060"
@@ -115,7 +115,7 @@ ruleid7="SV-258025r958402"
 vulnid7="V-258025"
 
 title8a="RHEL 9 must prevent a user from overriding the session lock-delay setting for the graphical user interface."
-title8b="Checking with 'gsettings writable org.gnome.desktop.screensaver lock-delay'." 
+title8b="Checking with:'gsettings writable org.gnome.desktop.screensaver lock-delay'." 
 title8c="Expecting: ${YLO}false
            NOTE: The example below is using the database \"local\" for the system, so the path is \"/etc/dconf/db/local.d\". This path must be modified if a database other than \"local\" is being used.
           NOTE: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable."${BLD}

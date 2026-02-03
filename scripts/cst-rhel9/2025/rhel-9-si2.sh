@@ -42,7 +42,7 @@ prog="$(basename $0)"
 controlid="SI-2 Flaw Remediation"
 
 title1a="RHEL 9 must remove all software components after updated versions have been installed."
-title1b="Checking with 'grep -i clean_requirements_on_remove /etc/dnf/dnf.conf'."
+title1b="Checking with:'grep -i clean_requirements_on_remove /etc/dnf/dnf.conf'."
 title1c="Expecting: i${YLO}clean_requirements_on_remove=True
            NOTE: If \"clean_requirements_on_remove\" is not set to \"True\", is commented out or missing from \"/etc/dnf/dnf.conf\", this is a finding."${BLD}
 cci1="CCI-002617"

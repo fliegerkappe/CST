@@ -99,7 +99,7 @@ ruleid5="SV-258151r1045298"
 vulnid5="V-258151"
 
 title6a="RHEL 9 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events."
-title6b="Checking with 'systemctl status auditd.service'."
+title6b="Checking with:'systemctl status auditd.service'."
 title6c="Expecting:${YLO}
            auditd.service - Security Auditing Service
            Loaded:loaded (/usr/lib/systemd/system/auditd.service; enabled; vendor preset: enabled)
@@ -122,7 +122,7 @@ ruleid7="SV-258164r1045301"
 vulnid7="V-258164"
 
 title8a=" RHEL 9 must allow only the Information System Security Manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
-title8b="Checking with 'find /etc/audit/rules.d/ /etc/audit/audit.rules /etc/audit/auditd.conf -type f -exec stat -c \"%a %n\" {} \;'"
+title8b="Checking with:'find /etc/audit/rules.d/ /etc/audit/audit.rules /etc/audit/auditd.conf -type f -exec stat -c \"%a %n\" {} \;'"
 title8c="Expecting: ${YLO}
            600 /etc/audit/rules.d/audit.rules
            640 /etc/audit/audit.rules

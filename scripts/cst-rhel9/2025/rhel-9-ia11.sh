@@ -67,7 +67,7 @@ ruleid3="SV-258088r1050789"
 vulnid3="V-258088"
 
 title4a="RHEL 9 must require users to provide a password for privilege escalation."
-title4b="Checking with 'grep -iR 'NOPASSWD' /etc/sudoers /etc/sudoers.d/"
+title4b="Checking with:'grep -iR 'NOPASSWD' /etc/sudoers /etc/sudoers.d/"
 title4c="Expecting: ${YLO}Nothing returned
            NOTE: If any occurrences of \"NOPASSWD\" are returned from the command and have not been documented with the information system security officer (ISSO) as an organizationally defined administrative group utilizing multifactor authentication (MFA), this is a finding."${BLD}
 cci4="CCI-004895 CCI-002038"

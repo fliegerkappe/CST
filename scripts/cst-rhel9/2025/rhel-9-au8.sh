@@ -62,10 +62,10 @@ vulnid2="V-257944"
 title3a="RHEL 9 must securely compare internal information system clocks at least every 24 hours with a server synchronized to an authoritative time source, such as the United States Naval Observatory (USNO) time servers, or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS)."
 title3b="Checking with:
 	   a. grep maxpoll /etc/chrony.conf
-	   b. chronyc sources"
+           b. chronyc sources"
 title3c="Expecting: ${YLO}
            a. server 0.us.pool.ntp.mil iburst maxpoll 16
-	   b. MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+           b. MS Name/IP address         Stratum Poll Reach LastRx Last sample               
            b. ===============================================================================
            b. ^+ ntp.maxhost.io                2   8   377   304  -1928us[-1908us] +/-   49ms
            b. ^+ 173.249.203.227               2   8   377    53   -916us[ -916us] +/-   32ms

@@ -37,7 +37,7 @@ prog="$(basename $0)"
 controlid="AU-4 Audit Storage Capacity"
 
 title1a="RHEL 9 must label all off-loaded audit logs before sending them to the central log server."
-title1b="Checking with 'grep \"name_format\" /etc/audit/auditd.conf."
+title1b="Checking with:'grep \"name_format\" /etc/audit/auditd.conf."
 title1c="Expecting: ${YLO}name_format = hostname
            Note: If the \"name_format\" option is not \"hostname\", \"fqd\", or \"numeric\", or the line is commented out, this is a finding."${BLD}
 cci1="CCI-000132 CCI-001851"
@@ -47,7 +47,7 @@ ruleid1="SV-258161r958416"
 vulnid1="V-258161"
 
 title2a="RHEL 9 must take appropriate action when the internal event queue is full."
-title2b="Checking with 'grep -i overflow_action /etc/audit/auditd.conf'."
+title2b="Checking with:'grep -i overflow_action /etc/audit/auditd.conf'."
 title2c="Expecting: ${YLO}overflow_action = syslog
            NOTE: If the value of the \"overflow_action\" option is not set to \"syslog\", \"single\", \"halt\", or the line is commented out, ask the System Administrator to indicate how the audit logs are off-loaded to a different system or media.
            NOTE: If there is no evidence that the transfer of the audit logs being off-loaded to another system or media takes appropriate action if the internal event queue becomes full, this is a finding."${BLD}

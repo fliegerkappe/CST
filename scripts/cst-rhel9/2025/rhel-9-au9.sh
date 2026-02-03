@@ -54,7 +54,7 @@ ruleid1="SV-257887r991557"
 vulnid1="V-257887"
 
 title2a="RHEL 9 audit tools must be owned by root."
-title2b="Checking with: sudo stat -c \"%U %n\" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules"
+title2b="Checking with: stat -c \"%U %n\" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules"
 title2c="Expecting: ${YLO}
            root /sbin/auditctl
            root /sbin/aureport
@@ -71,7 +71,7 @@ ruleid2="SV-257924r991557"
 vulnid2="V-257924"
 
 title3a="RHEL 9 audit tools must be group-owned by root."
-title3b="Checking with: sudo stat -c \"%G %n\" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules"
+title3b="Checking with: stat -c \"%G %n\" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules"
 title3c="Expecting: ${YLO}
            root /sbin/auditctl
            root /sbin/aureport
@@ -263,7 +263,7 @@ fail=0
 
 datetime="$(date +%FT%H:%M:%S)"
 
-owner="$(sudo stat -c "%U %n" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules)"
+owner="$(stat -c "%U %n" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules)"
 
 if [[ $owner ]]
 then
@@ -450,7 +450,7 @@ fail=1
 
 datetime="$(date +%FT%H:%M:%S)"
 
-immutable="$(sudo grep "^\s*[^#]" /etc/audit/audit.rules | tail -1)"
+immutable="$(grep "^\s*[^#]" /etc/audit/audit.rules | tail -1)"
 
 if [[ $immutable ]]
 then

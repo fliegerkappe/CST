@@ -107,7 +107,7 @@ ruleid6="SV-258174r958424"
 vulnid6="V-258174"
 
 title7a="RHEL 9 audit system must take appropriate action when an error writing to the audit storage volume occurs."
-title7b="Checking with: sudo grep disk_error_action /etc/audit/auditd.conf"
+title7b="Checking with: grep disk_error_action /etc/audit/auditd.conf"
 title7c="Expecting: ${YLO}disk_error_action = HALT
            NOTE: If the value of the \"disk_error_action\" option is not \"SYSLOG\", \"SINGLE\", or \"HALT\", or the line is commented out, ask the system administrator (SA) to indicate how the system takes appropriate action when an audit process failure occurs. If there is no evidence of appropriate action, this is a finding."${BLD}
 cci7="CCI-000140"

@@ -57,7 +57,7 @@ prog="$(basename $0)"
 controlid="AC-2 Account Management"
 
 title1a="RHEL 9 must automatically expire temporary accounts within 72 hours."
-title1b="Checking with 'chage -l temp_account_name | grep -i \"account expires\"'."
+title1b="Checking with:'chage -l temp_account_name | grep -i \"account expires\"'."
 title1c="Expecting: ${YLO}Temporary accounts have an expiration date set within 72 hours.${BLD}
 
            Example: temp-account:\$6\$...:19063:1:${YLO}3:${BLD}0:0:${YLO}19066${BLD}:
@@ -71,11 +71,11 @@ title1c="Expecting: ${YLO}Temporary accounts have an expiration date set within 
                       |           *------------------------------------2. encrypted password
                       *------------------------------------------------1. user login name
            NOTE: ${YLO}If any temporary accounts have no expiration date set or do not expire within 72 hours, this is a finding.${BLD}
-	   FIX:  ${YLO}$ sudo chage -E \`date -d \"+3 days\" +%Y-%m-%d\` temp_account_name: sets the password expiration date, but
-                 ${YLO}$ sudo chage -M 3 temp_acccount_name: sets the account expiration date to three days from when it was set.${BLD} 
-                 ${YLO}$ sudo chage -m 1 temp_acccount_name: sets the number of days between password resets.${BLD}
-                 ${YLO}$ sudo chage -I 1 temp_acccount_name: sets the number of days after password expiration that the account will be locked.${BLD}
-                 ${YLO}$ sudo chage -W -1 temp_acccount_name: disables the password age warning.${BLD}
+	   FIX:  ${YLO}$ chage -E \`date -d \"+3 days\" +%Y-%m-%d\` temp_account_name: sets the password expiration date, but
+                 ${YLO}$ chage -M 3 temp_acccount_name: sets the account expiration date to three days from when it was set.${BLD} 
+                 ${YLO}$ chage -m 1 temp_acccount_name: sets the number of days between password resets.${BLD}
+                 ${YLO}$ chage -I 1 temp_acccount_name: sets the number of days after password expiration that the account will be locked.${BLD}
+                 ${YLO}$ chage -W -1 temp_acccount_name: disables the password age warning.${BLD}
 	   NOTE: ${YLO}If chage -M is set to 365, the account will be set to expire a year from the date in position 8."${BLD}
 cci1="CCI-000016 CCI-001682"
 stigid1="RHEL-09-411040"
